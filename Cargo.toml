@@ -1,0 +1,24 @@
+[package]
+name = "git-tools"
+version = "0.0.0-alpha.0"
+edition = "2021"
+description = "G » Git tools"
+authors = ["Lucas Colombo <lucas@lucode.ar>"]
+
+[profile.release]
+strip = "symbols"
+lto = "fat"
+codegen-units = 1
+opt-level = "z"
+panic = "abort"
+rpath = false
+overflow-checks = false
+debug = 0
+debug-assertions = false
+
+[dependencies]
+eyre = { version = "0.6.12", default-features = false, features = ["auto-install"] }
+
+[[bin]]
+name = "git-tools"
+path = "src/main.rs"
