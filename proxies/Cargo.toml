@@ -1,0 +1,64 @@
+[package]
+name = "proxies"
+description.workspace = true
+version.workspace = true
+readme.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[dependencies]
+eyre = { workspace = true }
+common = { path = "../common" }
+lool = { workspace = true }
+
+[[bin]]
+name = "status"
+path = "src/status.rs"
+
+[[bin]]
+name = "stat"
+path = "src/status.rs"
+
+[[bin]]
+name = "add"
+path = "src/add.rs"
+
+[[bin]]
+name = "commit"
+path = "src/commit.rs"
+
+[[bin]]
+name = "cmt"
+path = "src/commit.rs"
+
+[[bin]]
+name = "checkout"
+path = "src/checkout.rs"
+
+[[bin]]
+name = "co"
+path = "src/checkout.rs"
+
+[[bin]]
+name = "branch"
+path = "src/branch.rs"
+
+[[bin]]
+name = "merge"
+path = "src/merge.rs"
+
+[[bin]]
+name = "pull"
+path = "src/pull.rs"
+
+[[bin]]
+name = "push"
+path = "src/push.rs"
+
+[[bin]]
+name = "remote"
+path = "src/remote.rs"
+
+[[bin]]
+name = "log"
+path = "src/log.rs"

@@ -3,21 +3,39 @@
 version: '3'
 
 tasks:
-  dev:
-    desc: 👨🏻‍💻 run git-tools in «dev» mode
+  watch:build:
+    desc: 👨🏻‍💻 build git-tools in watch mode
+    aliases:
+      - dev
+    summary: |
+      This task will build git-tools in watch mode. If we want to build a specific member, we can
+      pass the member name as a variable. For example, to build the `status` package, we can run
+      `task dev p=status`.
+    vars:
+      p: '{{.p | default ""}}'
     cmds:
-      - cargo watch -c -x "run --"
+      - cargo watch -c -x "build {{if eq .p ""}}{{else}}-p {{.p}}{{end}}"
 
-  build:watch:
-    desc: ⚡ watch git-tools «build»
+  watch:run:
+    desc: 🚀 run git-tools in watch mode
+    aliases:
+      - dev:run
+    summary: |
+      This task will run git-tools in watch mode. If we want to run a specific member, we can
+      pass the member name as a variable. For example, to run the `status` package, we can run
+      `task dev:run p=status`.
+      We can also pass additional arguments to the binary. For example, to run the `status` package
+      with the `--help` flag, we can run `task dev:run p=status args="--help"`.
+    vars:
+      p: '{{.p | default ""}}'
+      args: '{{.args | default ""}}'
     cmds:
-      - cargo watch -c -x "build"
+      - cargo watch -x "run {{if eq .p ""}}{{else}}-p {{.p}}{{end}} -- {{.args}}"
 
-  build:check:
-    desc: ⚡ build ids «release» and check the size
+  build:
+    desc: ⚡ build all as «release»
     cmds:
-      - cargo build --release
-      - python check_size.py
+      - cargo build --release --workspace
 
   fmt:
     desc: 🎨 format git-tools

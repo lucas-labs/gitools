@@ -1,0 +1,36 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "terminal.integrated.env.windows": {
+            // allows to run the command in the terminal for development purposes
+            "PATH": "${workspaceFolder}/target/debug;${workspaceFolder}/target/debug/examples;${env:PATH}",
+        },
+        "lucodear-icons.activeIconPack": "rust_ferris",
+        "lucodear-icons.folders.associations": {
+            ".cargo": "rust",
+            "cmds": "subcommand",
+            // "proxies": "routes"
+        },
+        "lucodear-icons.folders.customClones": [
+            {
+                "name": "folder-tldr",
+                "base": "docs",
+                "color": "blue-gray-500",
+                "folderNames": ["tldr"]
+            },
+            {
+                "name": "folder-proxies",
+                "base": "routes",
+                "color": "blue-600",
+                "folderNames": ["proxies"]
+            }
+        ],
+        "lucodear-icons.files.associations": {
+        
+        }
+    }
+}
