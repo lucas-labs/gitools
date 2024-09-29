@@ -5,5 +5,5 @@ fn main() {
     let profile = std::env::var("PROFILE").unwrap();
 
     fs::create_dir_all(format!("../../target/{}/tldr", profile)).unwrap();
-    fs::copy("README.md", format!("../../target/{}/tldr/sync.md", profile)).unwrap();
+    fs::copy("README.md", format!("../../target/{}/tldr/br.md", profile)).unwrap();
 }

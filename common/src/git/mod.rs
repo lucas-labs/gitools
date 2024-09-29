@@ -167,6 +167,17 @@ pub fn run(cmd: &str, args: Vec<String>) -> Result<()> {
     }
 }
 
+// executes a git command and returns the output
+pub fn exec(cmd: &str, args: Vec<&str>) -> Result<String> {
+    let output = std::process::Command::new("git").arg(cmd).args(args).output()?;
+
+    if !output.status.success() {
+        return fail!("Failed to execute git command: {}", String::from_utf8_lossy(&output.stderr));
+    }
+
+    Ok(s!(String::from_utf8_lossy(&output.stdout)))
+}
+
 fn get_not_a_git_repo_err() -> String {
     let err = stylize("Could not find a .git/config file", "red");
     let suggestion =
