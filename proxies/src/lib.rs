@@ -14,7 +14,7 @@ pub fn handle(command: &str) -> Result<()> {
     let result = match action::get(command) {
         Cmd { cmd, args } => git::run(&cmd, args),
         ShowVersion => print::version(command),
-        // try to print tldr or call git --help if a custom tldr is not found
+        // try to print tldr or call git {cmd} --help if a custom tldr is not found
         ShowTldr { name } => print::tldr(&name).or_else(|_| git::run(command, vec![s!("--help")])),
     };
 
