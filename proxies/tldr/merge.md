@@ -1,7 +1,7 @@
 # merge
 
 > Merge branches.
-> More information: <https://git-scm.com/docs/git-merge>.
+> More information: [https://git-scm.com/docs/git-merge].
 
 # Usage
 

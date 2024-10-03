@@ -1,6 +1,8 @@
 # br
 
 > This command is a git utility to manage branches.
+> Note: This command is not exactly the same as the `git branch` command 
+> or `branch` gitools proxy command.
 
 # usage
 
@@ -14,7 +16,7 @@
     `br {{branch_name}}`
 
 - Create new branch based on the current commit:
-    `branch {{branch_name}}`
+    `br {{branch_name}}`
 
 - Remove a branch:
-    `branch -d {{branch_name}}`
+    `br -d {{branch_name}}`

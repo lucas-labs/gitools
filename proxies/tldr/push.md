@@ -1,7 +1,7 @@
 # push
 
 > Push commits to a remote repository.
-> More information: <https://git-scm.com/docs/git-push>.
+> More information: [https://git-scm.com/docs/git-push].
 
 # Usage
 

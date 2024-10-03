@@ -1,7 +1,7 @@
 # checkout
 
 > Checkout a branch or paths to the working tree.
-> More information: <https://git-scm.com/docs/git-checkout>.
+> More information: [https://git-scm.com/docs/git-checkout].
 
 # Usage
 

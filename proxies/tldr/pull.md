@@ -1,7 +1,7 @@
 # pull
 
 > Fetch branch from a remote repository and merge it to local repository.
-> More information: <https://git-scm.com/docs/git-pull>.
+> More information: [https://git-scm.com/docs/git-pull].
 
 # Usage
 

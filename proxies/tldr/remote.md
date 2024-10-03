@@ -1,7 +1,7 @@
 # remote
 
 > Manage set of tracked repositories ("remotes").
-> More information: <https://git-scm.com/docs/git-remote>.
+> More information: [https://git-scm.com/docs/git-remote].
 
 # Extension
 

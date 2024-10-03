@@ -1,0 +1,17 @@
+[package]
+name = "git-tldr"
+version = "0.1.0"
+readme.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[dependencies]
+common = { path = "../../common" }
+eyre = { workspace = true }
+inquire = "0.7.5"
+lool = { workspace = true }
+pico-args = "0.5.0"
+
+[build-dependencies]
+toml = "0.8.19"
+glob = "0.3.1"

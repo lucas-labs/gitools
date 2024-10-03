@@ -1,7 +1,7 @@
 # branch
 
 > Main Git command for working with branches.
-> More information: <https://git-scm.com/docs/git-branch>.
+> More information: [https://git-scm.com/docs/git-branch].
 
 # Usage
 

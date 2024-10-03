@@ -22,7 +22,7 @@ fn get_formatted_content(content: &str) -> String {
     let code_block_re = Regex::new(r"(?s)```(\w*)\n(.*?)\n```").unwrap();
     let header_re = Regex::new(r"^(#{1,6})\s*(.+)").unwrap();
     let list_re = Regex::new(r"^(\s*[-*])\s+(.+)").unwrap();
-    let link_re = Regex::new(r"\[(.*?)\]\((.*?)\)").unwrap();
+    let link_re = Regex::new(r"\[(.*?)\](?:\((.*?)\))?").unwrap();
     let bold_re = Regex::new(r"\*\*(.*?)\*\*").unwrap();
     let italic_re = Regex::new(r"\*(.*?)\*").unwrap();
     let code_re = Regex::new(r"`(.*?)`").unwrap();
@@ -92,8 +92,8 @@ fn get_formatted_content(content: &str) -> String {
         // Links
         line = link_re
             .replace_all(&line, |caps: &regex_lite::Captures| {
-                let link_text = stylize(&caps[1], "bright-green");
-                format!("{}", link_text)
+                let link = caps.get(2).map_or(&caps[1], |m| m.as_str());
+                stylize(format!("<{}>", link), "bright-green")
             })
             .to_string();
 

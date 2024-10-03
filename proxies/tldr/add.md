@@ -1,7 +1,7 @@
 # add
 
 > Adds changed files to the index.
-> More information: <https://git-scm.com/docs/git-add>.
+> More information: [https://git-scm.com/docs/git-add].
 
 # Usage
 

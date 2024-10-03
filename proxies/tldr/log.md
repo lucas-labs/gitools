@@ -1,7 +1,7 @@
 # log
 
 > Show a history of commits.
-> More information: <https://git-scm.com/docs/git-log>.
+> More information: [https://git-scm.com/docs/git-log].
 
 # Usage
 
