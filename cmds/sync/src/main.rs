@@ -101,7 +101,7 @@ const COMMAND: &str = "sync";
 fn main() -> Result<()> {
     match action::get(COMMAND) {
         ShowTldr { name } => print::tldr(&name),
-        ShowVersion => print::version(COMMAND),
+        ShowVersion => print::version(COMMAND, env!("CARGO_PKG_VERSION")),
         Cmd { cmd: _, args } => {
             check_args(&args)?;
             let git = Git::new(&ExecutionContext::new()?)?;
@@ -127,7 +127,7 @@ fn handle(args: Vec<String>, branch: String, git: &Git) -> Result<()> {
 
         let commands = plan.commands();
         for (i, (cmd, args)) in commands.iter().enumerate() {
-            git.exec(cmd, &args)?;
+            git.exec(cmd, args)?;
 
             if i < commands.len() - 1 {
                 println!();
@@ -193,5 +193,5 @@ fn check_args(args: &Vec<String>) -> Result<()> {
         return fail!("Both remotes are the same");
     }
 
-    return Ok(());
+    Ok(())
 }

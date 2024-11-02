@@ -1,5 +1,7 @@
-use eyre::Result;
-use lool::{cli::stylize::stylize, fail};
+use {
+    eyre::Result,
+    lool::{cli::stylize::stylize, fail},
+};
 
 pub enum Action {
     Version,
@@ -46,12 +48,12 @@ pub fn parse_args() -> Result<Action> {
 
     // if x is empty
     if !x.is_empty() {
-        return fail!(
+        fail!(
             "{}\nTry {} for more information",
             stylize("Invalid arguments", "red"),
             stylize("br --help", "yellow+italic")
-        );
+        )
     } else {
-        return Ok(Action::Checkout);
+        Ok(Action::Checkout)
     }
 }

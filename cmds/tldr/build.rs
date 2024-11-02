@@ -1,9 +1,13 @@
-use glob::glob;
-use std::env;
-use std::fs::{self, OpenOptions};
-use std::io::Write;
-use std::path::{absolute, Path, PathBuf};
-use toml::Value;
+use {
+    glob::glob,
+    std::{
+        env,
+        fs::{self, OpenOptions},
+        io::Write,
+        path::{absolute, Path, PathBuf},
+    },
+    toml::Value,
+};
 
 const DEBUG: bool = false;
 
@@ -78,14 +82,14 @@ fn main() {
         .iter()
         .flat_map(|member| {
             let member_str = member.as_str().unwrap();
-            if member_str.contains("*") {
+            if member_str.contains('*') {
                 // Handle wildcard paths (e.g., cmds/*)
                 inf(&format!("Expanding wildcard for: {}", member_str));
-                let expanded = glob(&format!("{}/{}", workspace_dir.display(), member_str))
+                
+                glob(&format!("{}/{}", workspace_dir.display(), member_str))
                     .unwrap()
                     .filter_map(Result::ok)
-                    .collect::<Vec<_>>();
-                expanded
+                    .collect::<Vec<_>>()
             } else {
                 vec![workspace_dir.join(member_str)]
             }
@@ -163,7 +167,7 @@ fn main() {
         generated_code.push_str(&format!(
             "    BinaryInfo {{ name: \"{}\", cargo_toml_path: \"{}\" }},\n",
             bin_name,
-            bin_path.replace("\\", "/")
+            bin_path.replace('\\', "/")
         ));
     }
     generated_code.push_str("];\n");

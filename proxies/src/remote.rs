@@ -56,7 +56,7 @@ fn list_remotes() -> Result<()> {
             let url = format!("{} {}", stylize(dir, color), parts[1]);
 
             // Insert the URL into the hashmap grouped by the remote name
-            remotes.entry(name).or_insert_with(Vec::new).push(url);
+            remotes.entry(name).or_default().push(url);
         }
     }
 
@@ -66,11 +66,11 @@ fn list_remotes() -> Result<()> {
     let total_remotes = remotes.len();
     for (i, (remote, urls)) in remotes.iter().enumerate() {
         let col = colors[i % colors.len()];
-        println!("{} {}", stylize("╭─", &col), stylize(&remote, &col));
+        println!("{} {}", stylize("╭─", col), stylize(remote, col));
         for url in urls {
-            println!("{} {}", stylize("│", &col), url);
+            println!("{} {}", stylize("│", col), url);
         }
-        println!("{}", stylize("╰─", &col));
+        println!("{}", stylize("╰─", col));
 
         // Print a newline unless it's the last remote
         if i < total_remotes - 1 {

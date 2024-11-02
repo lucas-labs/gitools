@@ -1,10 +1,12 @@
-use common::git;
-use eyre::Result;
-use inquire::{
-    ui::{Attributes, Color, RenderConfig, StyleSheet, Styled},
-    Confirm, Select,
+use {
+    common::git,
+    eyre::Result,
+    inquire::{
+        ui::{Attributes, Color, RenderConfig, StyleSheet, Styled},
+        Confirm, Select,
+    },
+    lool::{cli::stylize::stylize, fail},
 };
-use lool::{cli::stylize::stylize, fail};
 
 pub fn select_checkout() -> Result<()> {
     // Run `git branch --all --no-color`

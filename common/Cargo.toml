@@ -2,7 +2,7 @@
 name = "common"
 description = "🐙 » common utilities for all commands"
 publish = false
-version.workspace = true
+version = "0.0.1"
 readme.workspace = true
 edition.workspace = true
 authors.workspace = true

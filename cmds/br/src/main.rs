@@ -15,9 +15,11 @@
 //!
 //! - If you call `br --list or -l`, it will list all the branches in the repository in a Select
 
-use args::{parse_args, Action};
-use common::cli::print;
-use eyre::Result;
+use {
+    args::{parse_args, Action},
+    common::cli::print,
+    eyre::Result,
+};
 
 mod action;
 mod args;
@@ -26,7 +28,7 @@ const COMMAND: &str = "br";
 
 fn main() -> Result<()> {
     match parse_args()? {
-        Action::Version => print::version(COMMAND),
+        Action::Version => print::version(COMMAND, env!("CARGO_PKG_VERSION")),
         Action::Help => print::tldr(COMMAND),
         Action::Checkout => action::select_checkout(),
         Action::CheckoutBranch(branch) => action::checkout(branch),

@@ -102,7 +102,7 @@ impl Git {
         let output = std::process::Command::new("git")
             .arg(cmd)
             .args(args)
-            .current_dir(&self.config.get_repo_path())
+            .current_dir(self.config.get_repo_path())
             .output()?;
 
         if !output.status.success() {
@@ -122,7 +122,7 @@ impl Git {
         let mut child = Command::new("git")
             .arg(cmd)
             .args(args)
-            .current_dir(&self.config.get_repo_path())
+            .current_dir(self.config.get_repo_path())
             .stdout(Stdio::piped())
             .stderr(Stdio::piped())
             .spawn()?;

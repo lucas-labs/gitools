@@ -47,7 +47,7 @@ pub fn print_child_output(child: &mut Child, command: String) -> Result<()> {
         "{} {} {}",
         stylize("╰─", "bright-cyan+bold"),
         stylize("end:", "magenta"),
-        stylize(&format!("{}", command), "bright-cyan+bold")
+        stylize(&command, "bright-cyan+bold")
     );
 
     Ok(())

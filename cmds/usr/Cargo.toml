@@ -1,0 +1,26 @@
+[package]
+name = "usr"
+version = "0.1.11"
+description.workspace = true
+readme.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "gusr"
+path = "src/main.rs"
+
+[[bin]]
+name = "git-usr"
+path = "src/main.rs"
+
+[dependencies]
+common = { path = "../../common" }
+eyre = { workspace = true }
+inquire = "0.7.5"
+lool = { workspace = true }
+pico-args = "0.5.0"
+rand = "0.8.5"
+serde = { version = "1.0.214", features = ["derive"] }
+tabled = "0.16.0"
+toml = "0.8.19"

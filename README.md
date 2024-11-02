@@ -43,4 +43,94 @@ The `proxies` package includes the following binaries:
 
 #### Special Commands
 
-- `mkbr`: Proxifies the `git checkout -b` command.
+##### `sync`
+
+See the full documentation [here](cmds/sync/README.md).
+
+##### `br`
+
+Checkout/create branches interactively (by selecting from a list of branches).
+
+```bash
+$ br 
+? Select a branch to checkout
+> master
+  feature/branch
+  bugfix/branch
+  hotfix/branch
+```
+
+```bash
+$ br feat/branch
+# checkout or create and checkout the branch 'feat/branch'
+```
+
+##### `git usr`
+
+Manage global Git user settings (`user.name`, `user.email`, `user.signingkey`), allowing us to
+switch between a predefined set of profiles interactively.
+
+```bash
+# add a new profile
+$ git usr add # or gusr add
+> id 0x
+> name 0x
+> email 0x@testing.com
+> key Q1W2E3R4T5Y6U7I8
+```
+
+```bash
+# list all available profiles
+$ git usr list # or gusr list
+   id        name            email               gpg         
+ ────────────────────────────────────────────────────────── 
+  0x     0x             0x@testing.com     Q1W2E3R4T5Y6U7I8  
+  lucas  Lucas Colombo  lucas@testing.com  8I7U6Y5T4R3E2W1Q  
+ ────────────────────────────────────────────────────────── 
+```
+
+```bash
+# set the active profile
+$ git usr set # or gusr set
+? Select a profile to set as active
+> 0x
+  lucas
+
+Active profile set to: 0x <0x@testing.com>
+```
+
+```bash
+# show current active profile
+$ git usr # or gusr
+Name: Lucas Colombo
+Email: lucasncolombo@gmail.com
+Signing key: Q1W2E3R4T5Y6U7I8
+```
+
+```bash
+# show the entire configuration file
+$ git usr cfg # or gusr cfg
+─────┬────────────────────────────────────────────────
+     │ File: /home/lucas/.config/gitools/config.toml
+─────┼────────────────────────────────────────────────
+   1 │ [[profile]]
+   2 │ id = "0x"
+   3 │ name = "lu0x"
+   4 │ email = "0x@testing.co"
+   5 │ signingkey = "Q1W2E3R4T5Y6U7I8"
+   6 │
+   7 │ [[profile]]
+   8 │ id = "lucas"
+   9 │ name = "Lucas Colombo"
+  10 │ email = "lucas@testing.co"
+  11 │ signingkey = "8I7U6Y5T4R3E2W1Q"
+─────┴────────────────────────────────────────────────
+```
+
+```bash
+# remove a profile
+$ git usr rm # or gusr rm
+? Select a profile to remove
+> 0x
+  lucas
+```

@@ -14,8 +14,6 @@ fn main() {
         p.parent().unwrap().to_path_buf()
     };
 
-    println!("Current exe home: {:?}", &current_exe_home);
-
     let mut tldrs = vec![];
 
     for bin in BINARIES {
@@ -28,8 +26,8 @@ fn main() {
         let tldr_content = std::fs::read_to_string(tldr_path).unwrap();
         let tldr = tldr_content
             .lines()
-            .filter(|l| l.starts_with(">"))
-            .map(|l| format!("{}", l))
+            .filter(|l| l.starts_with('>'))
+            .map(|l| l.to_string())
             .collect::<Vec<String>>();
 
         tldrs.push((bin.name.to_string(), tldr));
@@ -46,7 +44,7 @@ fn main() {
         for line in tldr {
             message.push_str(&format!("{}\n", line));
         }
-        message.push_str("\n");
+        message.push('\n');
     }
 
     if tldrs.is_empty() {
